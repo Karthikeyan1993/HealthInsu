@@ -1,15 +1,16 @@
 package com.bsib.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MapsId;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-@Entity(name = "SPOUSE")
+@Entity
 public class Spouse extends Individual {
 
 	@Id
@@ -17,10 +18,8 @@ public class Spouse extends Individual {
 	@Column(name = "SPOUSE_ID")
 	private Long id;
 
-	// @OneToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "PROP_ID")
-	@OneToOne(fetch = FetchType.LAZY)
-	@MapsId
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "PROP_ID")
 	private Proposar proposar;
 
 	public Long getId() {
@@ -29,10 +28,6 @@ public class Spouse extends Individual {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Proposar getProposar() {
-		return proposar;
 	}
 
 	public void setProposar(Proposar proposar) {

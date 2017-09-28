@@ -3,6 +3,7 @@ package com.bsib.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +22,11 @@ public class ProposarController {
 	public List<Proposar> masterResult() {
 		return proposarRepository.findAll();
 
+	}
+
+	@RequestMapping(value = "/proposal", method = RequestMethod.POST)
+	public Proposar SaveProposar(@RequestBody Proposar proposar) {
+		return proposarRepository.save(proposar);
 	}
 
 }

@@ -32,12 +32,13 @@ public class Proposar extends Individual {
 	private String gstRegisNumber;
 	private String race;
 
-	@OneToOne(mappedBy = "proposar", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-	private Spouse spouse;
-
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "PROP_ID")
 	private List<Children> children;
+
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "PROP_ID")
+	private Spouse spouse;
 
 	public Long getId() {
 		return id;

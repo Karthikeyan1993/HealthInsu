@@ -9,13 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity(name = "CHILDREN")
+@Entity()
 public class Children extends Individual {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID")
 	private Long id;
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "PROP_ID")
 	private Proposar proposar;
